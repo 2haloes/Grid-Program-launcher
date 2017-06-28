@@ -6,7 +6,28 @@
         xmlns:local="clr-namespace:Program_launcher"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+    <Grid x:Name="MainGrid">
+        <ListBox Name="itemListBox" Margin="10,10,10,30" SelectionChanged="itemListBox_SelectionChanged" MouseDoubleClick="itemListBox_MouseDoubleClick" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" Height="64" Width="64" Stretch="Uniform" Source="{Binding FileIcon}"  />
+                        <TextBlock Grid.Row="1" Width="64" TextWrapping="WrapWithOverflow" TextAlignment="Center" Text="{Binding FileName}" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+        <Button x:Name="AddButton" Click="AddButton_Click" Height="20" Content="Add" FontSize="10"  Margin="10,5" Width="40" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
+        <Button x:Name="DeleteButton" IsEnabled="False" Click="DeleteButton_Click"  Height="20" Content="Delete" FontSize="10" Margin="10,5" Width="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+        <Button x:Name="LaunchButton" IsEnabled="False" Click="LaunchButton_Click" Height="20" Content="Launch" FontSize="10" Margin="10,5" Width="40" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
     </Grid>
 </Window>
